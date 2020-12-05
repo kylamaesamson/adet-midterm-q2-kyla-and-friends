@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 namespace AuthenticationAndAuthorization.Data
 {
     //Contains all the tables
-    //vince
+
     public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base (options)
+            : base(options)
         {
 
         }
@@ -51,5 +51,5 @@ namespace AuthenticationAndAuthorization.Data
 
 
     }
-    //vince
+    
 }

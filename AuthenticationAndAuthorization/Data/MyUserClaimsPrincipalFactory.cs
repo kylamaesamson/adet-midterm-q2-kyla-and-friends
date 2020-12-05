@@ -9,7 +9,6 @@ using Microsoft.Extensions.Options;
 
 namespace AuthenticationAndAuthorization.Data
 {
-    //vince
     public class MyUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, IdentityRole>
     {
         public MyUserClaimsPrincipalFactory(
@@ -28,5 +27,4 @@ namespace AuthenticationAndAuthorization.Data
         }
     }
 
-    //vince
 }
