@@ -13,7 +13,7 @@ namespace AuthenticationAndAuthorization.Controllers
 {
     public class AdminController : Controller
     {
-        //mich
+        
         private readonly AppDbContext _db;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -63,7 +63,7 @@ namespace AuthenticationAndAuthorization.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToAction("Index");
-  
+
         }
 
         public async Task<IActionResult> Edit(string id)
@@ -83,7 +83,7 @@ namespace AuthenticationAndAuthorization.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string id,AppUser student)
+        public async Task<IActionResult> Edit(string id, AppUser student)
         {
 
             var currentAcc = await _userManager.FindByIdAsync(id);
@@ -99,7 +99,7 @@ namespace AuthenticationAndAuthorization.Controllers
 
                 return RedirectToAction("Index");
             }
-           
+
             return View(student);
 
         }
@@ -132,8 +132,8 @@ namespace AuthenticationAndAuthorization.Controllers
             {
                 studentGrades.PrelimGrade =
                     ((studentGrades.Quiz1Prelim + studentGrades.Quiz2Prelim + studentGrades.Quiz3Prelim)
-                    +(studentGrades.Assignment1Prelim + studentGrades.Assignment2Prelim + studentGrades.Assignment3Prelim))
-                    /6;
+                    + (studentGrades.Assignment1Prelim + studentGrades.Assignment2Prelim + studentGrades.Assignment3Prelim))
+                    / 6;
                 studentGrades.MidtermGrade =
                     ((studentGrades.Quiz1Midterm + studentGrades.Quiz2Midterm + studentGrades.Quiz3Midterm)
                     + (studentGrades.Assignment1Midterm + studentGrades.Assignment2Midterm + studentGrades.Assignment3Midterm))
@@ -142,7 +142,7 @@ namespace AuthenticationAndAuthorization.Controllers
                     ((studentGrades.Quiz1Prefinal + studentGrades.Quiz2Prefinal + studentGrades.Quiz3Prefinal)
                     + (studentGrades.Assignment1Prefinal + studentGrades.Assignment2Prefinal + studentGrades.Assignment3Prefinal))
                     / 6;
-                studentGrades.PrelimGrade = 
+                studentGrades.PrelimGrade =
                     ((studentGrades.Quiz1Final + studentGrades.Quiz2Final + studentGrades.Quiz3Final)
                     + (studentGrades.Assignment1Final + studentGrades.Assignment2Final + studentGrades.Assignment3Final))
                     / 6;
@@ -154,11 +154,10 @@ namespace AuthenticationAndAuthorization.Controllers
 
                 return RedirectToAction("StudentList");
             }
-        
+
             return View();
         }
 
-        //mich
 
     }
 }

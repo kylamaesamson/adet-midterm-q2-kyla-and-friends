@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace AuthenticationAndAuthorization.Models
 {
-    //mich
     public class StudentGrades
     {
         [Key]
@@ -38,11 +37,10 @@ namespace AuthenticationAndAuthorization.Models
         public int Assignment2Final { get; set; }
         public int Assignment3Final { get; set; }
 
-        public float PrelimGrade {get; set;}
+        public float PrelimGrade { get; set; }
         public float MidtermGrade { get; set; }
         public float PrefinalGrade { get; set; }
         public float FinalGrade { get; set; }
 
     }
-    //mich
 }
