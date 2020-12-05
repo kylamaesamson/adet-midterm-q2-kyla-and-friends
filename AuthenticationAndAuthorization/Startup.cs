@@ -36,7 +36,6 @@ namespace AuthenticationAndAuthorization
 
             //adding Identity registers the services
 
-            //Kyla
             services.AddIdentity<AppUser, IdentityRole>(config =>
             {
                 config.Password.RequiredLength = 4;
@@ -54,9 +53,9 @@ namespace AuthenticationAndAuthorization
                 config.Cookie.Name = "Identity.Cookie";
                 config.LoginPath = "/Home/Login";
             });
-            
 
-            
+
+
             services.AddAuthorization(config =>
             {
                 var defaultAuthBuilder = new AuthorizationPolicyBuilder();
@@ -67,7 +66,7 @@ namespace AuthenticationAndAuthorization
 
                 config.DefaultPolicy = defaultAuthPolicy;
             });
-            //Kyla
+           
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, MyUserClaimsPrincipalFactory>();
 
             services.AddControllersWithViews();
