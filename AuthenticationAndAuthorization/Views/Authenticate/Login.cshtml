@@ -1,0 +1,20 @@
+﻿
+<h1>Login Page</h1>
+<div class="showcase">
+    <div class="showcase--svg">
+        <img src="~/My Sass Library/img/LogIn.png" />
+    </div>
+    <div class="showcase--cta">
+        <form asp-action="Login" method="post">
+            <div class="m-2">
+                <label for="username">Username</label>
+                <input type="text" name="username" value="" class="form-control" />
+            </div>
+            <div class="m-2">
+                <label for="password">Password</label>
+                <input type="password" name="password" value="" class="form-control" />    
+            </div>
+            <button type="submit" class="btn-secondary--rectangle">Login</button>
+        </form>
+    </div>
+</div>

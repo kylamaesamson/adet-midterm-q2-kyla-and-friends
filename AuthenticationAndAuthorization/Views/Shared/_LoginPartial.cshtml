@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using AuthenticationAndAuthorization.Data;
+@using System.Security.Claims;
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+        {
+            <li class="nav-item">
+                <p>Hello Admin</p>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a id="manage" class="nav-link text-dark" asp-controller="#" asp-action="#" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            </li>
+        }
+
+        
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-controller="Authenticate" asp-action="Logout">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    }
+</ul>

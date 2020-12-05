@@ -1,0 +1,16 @@
+﻿@model AuthenticationAndAuthorization.Models.AppUser
+
+    <h1>Edit</h1>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" name="userName" value="" asp-for="UserName"/>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" type="text" name="firstName" value="" />
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" type="text" name="lastName" value="" />
+        <label asp-for="HomeAddress">Address</label>
+
+        <textarea asp-for="HomeAddress"></textarea>
+        
+        <button type="submit" value="Save">Save</button>
+    </form>

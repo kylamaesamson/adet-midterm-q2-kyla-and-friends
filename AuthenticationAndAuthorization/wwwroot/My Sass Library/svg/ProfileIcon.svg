@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
+   version="1.1"
+   id="svg954"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="ProfileIcon.svg"
+   inkscape:export-filename="C:\Users\Michelle\Desktop\School\APPDEV-Group\Midterm SVG\ProfileIcon.png"
+   inkscape:export-xdpi="96.900002"
+   inkscape:export-ydpi="96.900002">
+  <defs
+     id="defs948" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.55"
+     inkscape:cx="50"
+     inkscape:cy="50"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1304"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata951">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1517"
+       style="fill:#e6e6e6;stroke:#000000;stroke-width:2.26772;stroke-linejoin:round;stroke-opacity:0"
+       d="M 50.267578 4.9140625 A 45.354329 45.354329 0 0 0 4.9140625 50.267578 A 45.354329 45.354329 0 0 0 27.925781 89.736328 A 45.354329 45.354329 0 0 0 50.267578 95.621094 A 45.354329 45.354329 0 0 0 72.609375 89.738281 A 45.354329 45.354329 0 0 0 95.621094 50.267578 A 45.354329 45.354329 0 0 0 50.267578 4.9140625 z M 50.236328 6.8046875 A 43.465318 43.333397 0 0 1 50.267578 6.8046875 A 43.465318 43.333397 0 0 1 93.732422 50.136719 A 43.465318 43.333397 0 0 1 72.609375 87.306641 L 72.609375 67.931641 A 22.342342 20.090089 0 0 0 72.609375 67.873047 A 22.342342 20.090089 0 0 0 55.880859 48.427734 A 17.007874 17.007874 0 0 0 67.365234 32.341797 A 17.007874 17.007874 0 0 0 50.357422 15.333984 A 17.007874 17.007874 0 0 0 50.34375 15.333984 A 17.007874 17.007874 0 0 0 33.349609 32.341797 A 17.007874 17.007874 0 0 0 44.765625 48.404297 A 22.342342 20.090089 0 0 0 27.925781 67.873047 A 22.342342 20.090089 0 0 0 27.925781 67.929688 L 27.925781 67.931641 L 27.925781 87.304688 A 43.465318 43.333397 0 0 1 6.8027344 50.136719 A 43.465318 43.333397 0 0 1 50.236328 6.8046875 z M 50.267578 17.333984 A 15.11811 15.11811 0 0 1 65.384766 32.451172 A 15.11811 15.11811 0 0 1 50.267578 47.570312 A 15.11811 15.11811 0 0 1 35.150391 32.451172 A 15.11811 15.11811 0 0 1 50.267578 17.333984 z M 45.050781 50.451172 L 55.492188 50.451172 A 20.45339 18.479743 0 0 1 70.720703 68.316406 A 20.45339 18.479743 0 0 1 70.720703 68.371094 L 70.720703 88.429688 A 41.51981 41.718897 0 0 1 50.267578 93.839844 A 41.51981 41.718897 0 0 1 29.814453 88.427734 L 29.814453 68.371094 L 29.814453 68.369141 A 20.45339 18.479743 0 0 1 29.814453 68.316406 A 20.45339 18.479743 0 0 1 45.050781 50.451172 z "
+       transform="scale(0.26458333)" />
+  </g>
+</svg>
