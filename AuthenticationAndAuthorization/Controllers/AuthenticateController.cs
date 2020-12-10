@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationAndAuthorization.Controllers
 {
-
+    //AuthenticateController
     public class AuthenticateController : Controller
     {
         private readonly AppDbContext _db;
