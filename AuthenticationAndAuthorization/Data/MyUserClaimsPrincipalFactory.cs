@@ -9,7 +9,6 @@ using Microsoft.Extensions.Options;
 
 namespace AuthenticationAndAuthorization.Data
 {
-    //Vince
     public class MyUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, IdentityRole>
     {
         public MyUserClaimsPrincipalFactory(
@@ -26,5 +25,4 @@ namespace AuthenticationAndAuthorization.Data
             return identity;
         }
     }
-    //Vince
 }
