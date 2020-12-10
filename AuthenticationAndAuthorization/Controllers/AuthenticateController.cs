@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationAndAuthorization.Controllers
 {
-    //Kyla  
     public class AuthenticateController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -38,7 +37,7 @@ namespace AuthenticationAndAuthorization.Controllers
             };
 
             return View();
-            
+
         }
 
         [HttpPost]
@@ -85,8 +84,8 @@ namespace AuthenticationAndAuthorization.Controllers
         {
             //register functionality
 
-           
-            
+
+
 
             var user = new AppUser
             {
@@ -109,7 +108,7 @@ namespace AuthenticationAndAuthorization.Controllers
                 var midterm = InitializeGrades("Midterm");
                 var preFinal = InitializeGrades("Prefinal");
                 var final = InitializeGrades("Final");
-                await _appDbContext.AddRangeAsync(prelim,midterm,preFinal,final);
+                await _appDbContext.AddRangeAsync(prelim, midterm, preFinal, final);
                 await _appDbContext.SaveChangesAsync();
 
                 var grade = new StudentGrades
@@ -134,8 +133,8 @@ namespace AuthenticationAndAuthorization.Controllers
                 Term = term,
                 Grade = 0
             };
-            string[] types = {"Quiz1","Quiz2","Quiz3","Assignment1","Assignment2","Assignment3" };
-            
+            string[] types = { "Quiz1", "Quiz2", "Quiz3", "Assignment1", "Assignment2", "Assignment3" };
+
             var item = new ItemScore();
             for (int i = 0; i < types.Length; i++)
             {
@@ -186,5 +185,5 @@ namespace AuthenticationAndAuthorization.Controllers
         }
 
     }
-    //Kyla
+    
 }
