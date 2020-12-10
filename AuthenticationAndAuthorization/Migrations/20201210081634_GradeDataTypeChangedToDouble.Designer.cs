@@ -4,14 +4,16 @@ using AuthenticationAndAuthorization.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationAndAuthorization.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210081634_GradeDataTypeChangedToDouble")]
+    partial class GradeDataTypeChangedToDouble
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,9 +114,6 @@ namespace AuthenticationAndAuthorization.Migrations
 
                     b.Property<int?>("PrelimID")
                         .HasColumnType("int");
-
-                    b.Property<double>("SubjectGrade")
-                        .HasColumnType("float");
 
                     b.HasKey("ID");
 
@@ -356,15 +355,15 @@ namespace AuthenticationAndAuthorization.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "851a4259-2ad9-402a-9cf8-d634702e9bcf",
+                            ConcurrencyStamp = "9784ce37-d927-4bcf-bfad-103eead594a3",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL>COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPig4xBqVF9pnRCz5O5DdmSThwQMq/w3ksuy3wC3I4bUQcyL03CY/h3/ACYP1uUhgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKeJNVUxzUy6Wck/PZQyYXCHkEm746pBmWbMS/SLexDnv30wu6sN33QqJkKnatFnnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89916dd5-ba3e-48d9-9927-51edc85352ad",
+                            SecurityStamp = "5ae24963-5e79-4798-ae07-a3a558342f2c",
                             TwoFactorEnabled = false,
                             UserName = "administrator",
                             FirstName = "admin",

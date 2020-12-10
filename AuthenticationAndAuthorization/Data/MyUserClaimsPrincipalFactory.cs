@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace AuthenticationAndAuthorization.Data
 {
+    //Vince
     public class MyUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, IdentityRole>
     {
         public MyUserClaimsPrincipalFactory(
@@ -18,7 +19,6 @@ namespace AuthenticationAndAuthorization.Data
             : base(userManager, roleManager, optionsAccessor)
         {
         }
-
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
         {
             var identity = await base.GenerateClaimsAsync(user);
@@ -26,5 +26,5 @@ namespace AuthenticationAndAuthorization.Data
             return identity;
         }
     }
-
+    //Vince
 }

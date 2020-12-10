@@ -4,14 +4,16 @@ using AuthenticationAndAuthorization.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationAndAuthorization.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210071947_StudentGradesFix")]
+    partial class StudentGradesFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,8 +37,8 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("Assignment3ID")
                         .HasColumnType("int");
 
-                    b.Property<double>("Grade")
-                        .HasColumnType("float");
+                    b.Property<float>("Grade")
+                        .HasColumnType("real");
 
                     b.Property<int?>("Quiz1ID")
                         .HasColumnType("int");
@@ -112,9 +114,6 @@ namespace AuthenticationAndAuthorization.Migrations
 
                     b.Property<int?>("PrelimID")
                         .HasColumnType("int");
-
-                    b.Property<double>("SubjectGrade")
-                        .HasColumnType("float");
 
                     b.HasKey("ID");
 
@@ -356,15 +355,15 @@ namespace AuthenticationAndAuthorization.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "851a4259-2ad9-402a-9cf8-d634702e9bcf",
+                            ConcurrencyStamp = "6e4380f6-7915-49fe-b423-6568f97de09b",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL>COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPig4xBqVF9pnRCz5O5DdmSThwQMq/w3ksuy3wC3I4bUQcyL03CY/h3/ACYP1uUhgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELgRkameW+SApp7oQT9lQmgUAU2xHz5rbjhkE0r83l2vqvPWR7tiAV4PWHx3KIrZbg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89916dd5-ba3e-48d9-9927-51edc85352ad",
+                            SecurityStamp = "83541e88-5e06-4328-9042-42f9e407d137",
                             TwoFactorEnabled = false,
                             UserName = "administrator",
                             FirstName = "admin",

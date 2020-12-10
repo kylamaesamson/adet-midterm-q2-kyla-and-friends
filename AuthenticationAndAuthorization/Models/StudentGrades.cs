@@ -6,41 +6,22 @@ using System.Threading.Tasks;
 
 namespace AuthenticationAndAuthorization.Models
 {
+    //Mich
     public class StudentGrades
     {
         [Key]
         public int ID { get; set; }
-        public string UserID { get; set; }
-
-        public int Quiz1Prelim { get; set; }
-        public int Quiz2Prelim { get; set; }
-        public int Quiz3Prelim { get; set; }
-        public int Assignment1Prelim { get; set; }
-        public int Assignment2Prelim { get; set; }
-        public int Assignment3Prelim { get; set; }
-        public int Quiz1Midterm { get; set; }
-        public int Quiz2Midterm { get; set; }
-        public int Quiz3Midterm { get; set; }
-        public int Assignment1Midterm { get; set; }
-        public int Assignment2Midterm { get; set; }
-        public int Assignment3Midterm { get; set; }
-        public int Quiz1Prefinal { get; set; }
-        public int Quiz2Prefinal { get; set; }
-        public int Quiz3Prefinal { get; set; }
-        public int Assignment1Prefinal { get; set; }
-        public int Assignment2Prefinal { get; set; }
-        public int Assignment3Prefinal { get; set; }
-        public int Quiz1Final { get; set; }
-        public int Quiz2Final { get; set; }
-        public int Quiz3Final { get; set; }
-        public int Assignment1Final { get; set; }
-        public int Assignment2Final { get; set; }
-        public int Assignment3Final { get; set; }
-
-        public float PrelimGrade { get; set; }
-        public float MidtermGrade { get; set; }
-        public float PrefinalGrade { get; set; }
-        public float FinalGrade { get; set; }
-
+        public string AppUserID { get; set; }
+        public double SubjectGrade {get; set; }
+        public int? PrelimID { get; set; }
+        public int? MidtermID { get; set; }
+        public int? PrefinalID { get; set; }
+        public int? FinalID { get; set; }
+        public AppUser AppUser { get; set; }
+        public GradesPerTerm Prelim { get; set; }
+        public GradesPerTerm Midterm { get; set; }
+        public GradesPerTerm Prefinal { get; set; }
+        public GradesPerTerm Final { get; set; }
     }
+    //Mich
 }
