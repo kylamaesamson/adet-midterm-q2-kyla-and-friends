@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 namespace AuthenticationAndAuthorization.Data
 {
     //Contains all the tables
-
     public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -18,15 +17,15 @@ namespace AuthenticationAndAuthorization.Data
         {
 
         }
-
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<StudentGrades> StudentGrades { get; set; }
+        public DbSet<GradesPerTerm> GradesPerTerms { get; set; }
+        public DbSet<ItemScore> ItemScores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             string ADMIN_ID = "02174cf0–9412–4cfe - afbf - 59f706d72cf6";
-
             //create user
             var appUser = new AppUser
             {
@@ -40,16 +39,13 @@ namespace AuthenticationAndAuthorization.Data
                 NormalizedUserName = "ADMINISTRATOR",
                 NormalizedEmail = "ADMIN@GMAIL>COM"
             };
-
             //set user password
             PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();
             appUser.PasswordHash = ph.HashPassword(appUser, "password");
-
             //seed user
             builder.Entity<AppUser>().HasData(appUser);
         }
 
 
     }
-    
 }

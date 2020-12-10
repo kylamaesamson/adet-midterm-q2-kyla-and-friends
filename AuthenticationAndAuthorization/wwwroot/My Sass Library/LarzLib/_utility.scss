@@ -8,6 +8,22 @@
 a{
     text-decoration: none;
 }
+table{
+    padding: 20px;
+    border: 1px solid black;
+    margin: 30px;
+    text-align: center;
+
+    td{
+        padding: 20px;
+        border: 1px solid black;
+    }
+}
+
+a:hover{
+    text-decoration: none;
+    color: var(--body--text-color);
+}
 body{
     margin: 0;
     padding: 0;

@@ -11,22 +11,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationAndAuthorization.Controllers
 {
-    //AuthenticateController
     public class AuthenticateController : Controller
     {
-        private readonly AppDbContext _db;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly AppDbContext _appDbContext;
 
         public AuthenticateController(
-            AppDbContext db,
             UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager
+            SignInManager<AppUser> signInManager,
+            AppDbContext appDbContext
         )
         {
-            _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
+            _appDbContext = appDbContext;
         }
 
         public async Task<IActionResult> Login()
@@ -38,7 +37,7 @@ namespace AuthenticationAndAuthorization.Controllers
             };
 
             return View();
-            
+
         }
 
         [HttpPost]
@@ -60,11 +59,9 @@ namespace AuthenticationAndAuthorization.Controllers
                     if (role == "Admin")
                     {
                         return RedirectToAction("Index", "Admin", new { area = "" });
-
                     }
                     else if (role == "Student")
                     {
-
                         return RedirectToAction("Index", "Student", new { area = "" });
                     }
 
@@ -83,20 +80,20 @@ namespace AuthenticationAndAuthorization.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddStudent(string password, string userName, string firstName, string lastName, string homeAddress,string role)
+        public async Task<IActionResult> AddStudent(string password, string userName, string firstName, string lastName, string homeAddress)
         {
             //register functionality
 
-           
-            
+
+
 
             var user = new AppUser
             {
                 FirstName = firstName,
                 LastName = lastName,
-                Role = role,
                 HomeAddress = homeAddress,
                 UserName = userName,
+                Role = "Student"
             };
 
             var _password = password;
@@ -106,17 +103,80 @@ namespace AuthenticationAndAuthorization.Controllers
             if (result.Succeeded)
             {
                 user = await _userManager.FindByNameAsync(user.UserName);
-                
-                return RedirectToAction("Index", "Admin", new { area = "" });
 
+                var prelim = InitializeGrades("Prelim");
+                var midterm = InitializeGrades("Midterm");
+                var preFinal = InitializeGrades("Prefinal");
+                var final = InitializeGrades("Final");
+                await _appDbContext.AddRangeAsync(prelim, midterm, preFinal, final);
+                await _appDbContext.SaveChangesAsync();
+
+                var grade = new StudentGrades
+                {
+                    AppUserID = user.Id,
+                    PrelimID = prelim.ID,
+                    MidtermID = midterm.ID,
+                    PrefinalID = preFinal.ID,
+                    FinalID = final.ID
+                };
+
+                await _appDbContext.AddAsync(grade);
+                await _appDbContext.SaveChangesAsync();
             }
-
             return RedirectToAction("Index", "Admin", new { area = "" });
         }
 
+        public GradesPerTerm InitializeGrades(string term)
+        {
+            var gpt = new GradesPerTerm
+            {
+                Term = term,
+                Grade = 0
+            };
+            string[] types = { "Quiz1", "Quiz2", "Quiz3", "Assignment1", "Assignment2", "Assignment3" };
 
-         
+            var item = new ItemScore();
+            for (int i = 0; i < types.Length; i++)
+            {
+                item = new ItemScore
+                {
+                    TotalItems = 0,
+                    Score = 0,
+                    Grade = 0,
+                    Type = types[i]
+                };
 
+                _appDbContext.Add(item);
+                _appDbContext.SaveChanges();
+
+                switch (i)
+                {
+                    case 0:
+                        gpt.Quiz1ID = item.ID;
+                        break;
+                    case 1:
+                        gpt.Quiz2ID = item.ID;
+                        break;
+                    case 2:
+                        gpt.Quiz3ID = item.ID;
+                        break;
+                    case 3:
+                        gpt.Assignment1ID = item.ID;
+                        break;
+                    case 4:
+                        gpt.Assignment2ID = item.ID;
+                        break;
+                    case 5:
+                        gpt.Assignment3ID = item.ID;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+            return gpt;
+        }
 
         public async Task<IActionResult> LogOut()
         {
@@ -125,4 +185,5 @@ namespace AuthenticationAndAuthorization.Controllers
         }
 
     }
+    
 }
