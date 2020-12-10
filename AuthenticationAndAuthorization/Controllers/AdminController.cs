@@ -38,10 +38,20 @@ namespace AuthenticationAndAuthorization.Controllers
             return View(_db.AppUsers.ToList());
         }
 
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            return View();
+            var student = await _userManager.FindByIdAsync(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
         }
 
         public async Task<IActionResult> Delete(string id)
