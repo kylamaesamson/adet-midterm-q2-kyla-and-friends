@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace AuthenticationAndAuthorization.Models
 {
-    //Mich
     public class StudentGrades
     {
         [Key]
         public int ID { get; set; }
         public string AppUserID { get; set; }
-        public double SubjectGrade {get; set; }
+        public double SubjectGrade { get; set; }
         public int? PrelimID { get; set; }
         public int? MidtermID { get; set; }
         public int? PrefinalID { get; set; }
@@ -23,5 +22,5 @@ namespace AuthenticationAndAuthorization.Models
         public GradesPerTerm Prefinal { get; set; }
         public GradesPerTerm Final { get; set; }
     }
-    //Mich
+    
 }

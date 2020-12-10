@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuthenticationAndAuthorization.Models
 {
-    //Mich
+    
     public class GradesPerTerm
     {
         [Key]
@@ -27,5 +27,4 @@ namespace AuthenticationAndAuthorization.Models
         public ItemScore Assignment2 { get; set; }
         public ItemScore Assignment3 { get; set; }
     }
-    //Mich
 }

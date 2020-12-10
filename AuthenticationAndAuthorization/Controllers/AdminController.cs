@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationAndAuthorization.Controllers
 {
-    //Mich
+    
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        
+
         private readonly AppDbContext _db;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -40,7 +40,7 @@ namespace AuthenticationAndAuthorization.Controllers
 
         public IActionResult Details(string id)
         {
-            
+
             return View();
         }
 
@@ -127,16 +127,16 @@ namespace AuthenticationAndAuthorization.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddGrade(int id,ItemScore itemScore)
+        public async Task<IActionResult> AddGrade(int id, ItemScore itemScore)
         {
             if (id != itemScore.ID)
             {
                 return NotFound();
-            } 
+            }
 
             if (ModelState.IsValid)
             {
-                
+
                 double rawGrade = Convert.ToDouble(itemScore.Score) / Convert.ToDouble(itemScore.TotalItems);
                 itemScore.Grade = Math.Round(rawGrade, 2);
                 if (itemScore.Type == "Quiz1")
@@ -145,7 +145,7 @@ namespace AuthenticationAndAuthorization.Controllers
                             i => i.Quiz1ID == itemScore.ID);
                     _db.Update(term);
                 }
-                else if(itemScore.Type == "Quiz2")
+                else if (itemScore.Type == "Quiz2")
                 {
                     var term = await _db.GradesPerTerms.FirstOrDefaultAsync(
                             i => i.Quiz2ID == itemScore.ID);
@@ -183,7 +183,7 @@ namespace AuthenticationAndAuthorization.Controllers
             }
 
             return View();
-            
+
         }
 
         public async Task<IActionResult> Grades(string id)
@@ -229,7 +229,7 @@ namespace AuthenticationAndAuthorization.Controllers
             var mA2 = grade.Midterm.Assignment2.Grade;
             var mA3 = grade.Midterm.Assignment3.Grade;
 
-            grade.Midterm.Grade = Math.Round(((mQ1+mQ2+mQ3+mA1+mA2+mA3)/6),2);
+            grade.Midterm.Grade = Math.Round(((mQ1 + mQ2 + mQ3 + mA1 + mA2 + mA3) / 6), 2);
 
             grade.Prefinal = await _db.GradesPerTerms.FindAsync(grade.PrefinalID);
             grade.Prefinal.Quiz1 = await _db.ItemScores.FindAsync(grade.Prefinal.Quiz1ID);
@@ -277,5 +277,4 @@ namespace AuthenticationAndAuthorization.Controllers
 
 
     }
-    //Mich
 }
