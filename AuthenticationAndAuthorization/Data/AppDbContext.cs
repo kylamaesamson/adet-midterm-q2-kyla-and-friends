@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AuthenticationAndAuthorization.Data
 {
     //Contains all the tables
-
+    //Initializing DbContext
     public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
