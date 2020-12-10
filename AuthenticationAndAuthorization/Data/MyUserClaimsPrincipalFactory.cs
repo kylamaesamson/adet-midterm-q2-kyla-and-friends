@@ -18,7 +18,6 @@ namespace AuthenticationAndAuthorization.Data
             : base(userManager, roleManager, optionsAccessor)
         {
         }
-
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
         {
             var identity = await base.GenerateClaimsAsync(user);
@@ -26,5 +25,4 @@ namespace AuthenticationAndAuthorization.Data
             return identity;
         }
     }
-
 }

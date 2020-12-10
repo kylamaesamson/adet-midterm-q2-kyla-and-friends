@@ -4,14 +4,16 @@ using AuthenticationAndAuthorization.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationAndAuthorization.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201209171026_addingGrades")]
+    partial class addingGrades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,17 +28,17 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Assignment1ID")
+                    b.Property<int?>("Ass1ID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Assignment2ID")
+                    b.Property<int?>("Ass2ID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Assignment3ID")
+                    b.Property<int?>("Ass3ID")
                         .HasColumnType("int");
 
-                    b.Property<double>("Grade")
-                        .HasColumnType("float");
+                    b.Property<float>("Grade")
+                        .HasColumnType("real");
 
                     b.Property<int?>("Quiz1ID")
                         .HasColumnType("int");
@@ -52,18 +54,6 @@ namespace AuthenticationAndAuthorization.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("Assignment1ID");
-
-                    b.HasIndex("Assignment2ID");
-
-                    b.HasIndex("Assignment3ID");
-
-                    b.HasIndex("Quiz1ID");
-
-                    b.HasIndex("Quiz2ID");
-
-                    b.HasIndex("Quiz3ID");
-
                     b.ToTable("GradesPerTerms");
                 });
 
@@ -74,8 +64,8 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Grade")
-                        .HasColumnType("float");
+                    b.Property<float>("Grade")
+                        .HasColumnType("real");
 
                     b.Property<int>("Score")
                         .HasColumnType("int");
@@ -98,9 +88,6 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppUserID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int?>("FinalID")
                         .HasColumnType("int");
 
@@ -113,20 +100,10 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("PrelimID")
                         .HasColumnType("int");
 
-                    b.Property<double>("SubjectGrade")
-                        .HasColumnType("float");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AppUserID");
-
-                    b.HasIndex("FinalID");
-
-                    b.HasIndex("MidtermID");
-
-                    b.HasIndex("PrefinalID");
-
-                    b.HasIndex("PrelimID");
 
                     b.ToTable("StudentGrades");
                 });
@@ -356,71 +333,21 @@ namespace AuthenticationAndAuthorization.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "851a4259-2ad9-402a-9cf8-d634702e9bcf",
+                            ConcurrencyStamp = "ad3430d8-80bb-4e33-9ad3-7157d625d3ab",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL>COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPig4xBqVF9pnRCz5O5DdmSThwQMq/w3ksuy3wC3I4bUQcyL03CY/h3/ACYP1uUhgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIwbyYZdRtL5iWevNfbSJ8s7+YynoS2LKNV0njcrisWmhaLSY+M/Be5+YqrKkCls1g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89916dd5-ba3e-48d9-9927-51edc85352ad",
+                            SecurityStamp = "5baed936-55db-43e9-a260-607987648dad",
                             TwoFactorEnabled = false,
                             UserName = "administrator",
                             FirstName = "admin",
                             LastName = "admin",
                             Role = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("AuthenticationAndAuthorization.Models.GradesPerTerm", b =>
-                {
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Assignment1")
-                        .WithMany()
-                        .HasForeignKey("Assignment1ID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Assignment2")
-                        .WithMany()
-                        .HasForeignKey("Assignment2ID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Assignment3")
-                        .WithMany()
-                        .HasForeignKey("Assignment3ID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Quiz1")
-                        .WithMany()
-                        .HasForeignKey("Quiz1ID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Quiz2")
-                        .WithMany()
-                        .HasForeignKey("Quiz2ID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.ItemScore", "Quiz3")
-                        .WithMany()
-                        .HasForeignKey("Quiz3ID");
-                });
-
-            modelBuilder.Entity("AuthenticationAndAuthorization.Models.StudentGrades", b =>
-                {
-                    b.HasOne("AuthenticationAndAuthorization.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Final")
-                        .WithMany()
-                        .HasForeignKey("FinalID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Midterm")
-                        .WithMany()
-                        .HasForeignKey("MidtermID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Prefinal")
-                        .WithMany()
-                        .HasForeignKey("PrefinalID");
-
-                    b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Prelim")
-                        .WithMany()
-                        .HasForeignKey("PrelimID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

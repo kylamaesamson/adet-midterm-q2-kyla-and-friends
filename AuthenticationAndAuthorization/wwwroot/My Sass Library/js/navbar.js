@@ -32,18 +32,32 @@ const sectionOneObserver = new IntersectionObserver(function(entries, sectionOne
 sectionOneObserver.observe(sectionOne);
 
 
-const checkboxPc = document.querySelector("#nightToggle");
-const checkboxMobile = document.querySelector("#nightToggleMobile");
+const checkboxPc = document.getElementById("nightToggle");
+const checkboxMobile = document.getElementById("nightToggleMobile");
+
+if(checkboxPc){
+    initTheme();
+}
+
+function initTheme() {
+    var darkThemeSelected = (localStorage.getItem('nightToggle') !== null && localStorage.getItem('nightToggle') === 'night');
+    checkboxPc.checked = darkThemeSelected;
+    checkboxMobile.checked = darkThemeSelected;
+    darkThemeSelected ? document.body.setAttribute('data-theme', 'night') : document.body.removeAttribute('data-theme');
+};
+
 
 checkboxPc.addEventListener('change', function(){
     if(this.checked){
         trans();
-        document.documentElement.setAttribute('data-theme','night');
+        document.body.setAttribute('data-theme', 'night');
+        localStorage.setItem('nightToggle', 'night');
         checkboxMobile.checked = true;
     }else
     {
         trans();
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.body.setAttribute('data-theme', 'light');
+        localStorage.removeItem('nightToggle')
         checkboxMobile.checked = false;
     }
 });
@@ -51,21 +65,25 @@ checkboxPc.addEventListener('change', function(){
 checkboxMobile.addEventListener('change', function(){
     if(this.checked){
         trans();
-        document.documentElement.setAttribute('data-theme','night');
+        document.body.setAttribute('data-theme', 'night');
+        localStorage.setItem('nightToggle', 'night');
         checkboxPc.checked = true;
     }else
     {
         trans();
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.body.setAttribute('data-theme', 'light');
+        localStorage.removeItem('nightToggle')
         checkboxPc.checked = false;
     }
 });
 
 const trans = () => {
-    document.documentElement.classList.add('transition');
+    document.body.classList.add('transition');
     window.setTimeout(() => {
-        document.documentElement.classList.remove('transition')
+        document.body.classList.remove('transition')
     }, 400)
 }
+
+
 
 

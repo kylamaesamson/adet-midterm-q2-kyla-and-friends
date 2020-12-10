@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AuthenticationAndAuthorization.Models
 {
-    
     public class AppUser : IdentityUser
     {
         [PersonalData]
@@ -24,5 +23,4 @@ namespace AuthenticationAndAuthorization.Models
         public string HomeAddress { get; set; }
     }
 
-    
 }

@@ -4,14 +4,16 @@ using AuthenticationAndAuthorization.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationAndAuthorization.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210065020_fixedRedundantId")]
+    partial class fixedRedundantId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,8 +37,8 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("Assignment3ID")
                         .HasColumnType("int");
 
-                    b.Property<double>("Grade")
-                        .HasColumnType("float");
+                    b.Property<float>("Grade")
+                        .HasColumnType("real");
 
                     b.Property<int?>("Quiz1ID")
                         .HasColumnType("int");
@@ -98,7 +100,7 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppUserID")
+                    b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("FinalID")
@@ -113,12 +115,12 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("PrelimID")
                         .HasColumnType("int");
 
-                    b.Property<double>("SubjectGrade")
-                        .HasColumnType("float");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AppUserID");
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("FinalID");
 
@@ -356,15 +358,15 @@ namespace AuthenticationAndAuthorization.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "851a4259-2ad9-402a-9cf8-d634702e9bcf",
+                            ConcurrencyStamp = "33d6e950-7764-4852-b517-422544f8dea0",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL>COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPig4xBqVF9pnRCz5O5DdmSThwQMq/w3ksuy3wC3I4bUQcyL03CY/h3/ACYP1uUhgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGlnModKQUMiVd1xzW/+IpTCz5+iMDEwipQZUirR4K7ASEBjRBkIaJ1xQd9b6rwzYA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89916dd5-ba3e-48d9-9927-51edc85352ad",
+                            SecurityStamp = "56836108-0db7-432a-9b9a-711a8ea66411",
                             TwoFactorEnabled = false,
                             UserName = "administrator",
                             FirstName = "admin",
@@ -404,7 +406,7 @@ namespace AuthenticationAndAuthorization.Migrations
                 {
                     b.HasOne("AuthenticationAndAuthorization.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserID");
+                        .HasForeignKey("AppUserId");
 
                     b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Final")
                         .WithMany()

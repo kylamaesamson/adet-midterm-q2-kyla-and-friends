@@ -4,14 +4,16 @@ using AuthenticationAndAuthorization.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationAndAuthorization.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210042355_gradesView")]
+    partial class gradesView
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +28,15 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Ass1ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Ass2ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Ass3ID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Assignment1ID")
                         .HasColumnType("int");
 
@@ -35,8 +46,8 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("Assignment3ID")
                         .HasColumnType("int");
 
-                    b.Property<double>("Grade")
-                        .HasColumnType("float");
+                    b.Property<float>("Grade")
+                        .HasColumnType("real");
 
                     b.Property<int?>("Quiz1ID")
                         .HasColumnType("int");
@@ -98,7 +109,7 @@ namespace AuthenticationAndAuthorization.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppUserID")
+                    b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("FinalID")
@@ -113,12 +124,12 @@ namespace AuthenticationAndAuthorization.Migrations
                     b.Property<int?>("PrelimID")
                         .HasColumnType("int");
 
-                    b.Property<double>("SubjectGrade")
-                        .HasColumnType("float");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AppUserID");
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("FinalID");
 
@@ -356,15 +367,15 @@ namespace AuthenticationAndAuthorization.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "851a4259-2ad9-402a-9cf8-d634702e9bcf",
+                            ConcurrencyStamp = "a486a394-e315-4d90-a127-96c2755382e7",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL>COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPig4xBqVF9pnRCz5O5DdmSThwQMq/w3ksuy3wC3I4bUQcyL03CY/h3/ACYP1uUhgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAO/iw/B5xjFKlYvg+sarjWrNdmQ+mzuFjVkyWIDQmY7mTwO1tHqFqPKPm/ABCiPYw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89916dd5-ba3e-48d9-9927-51edc85352ad",
+                            SecurityStamp = "094a9cd7-037a-4a00-9957-6997cd09fc36",
                             TwoFactorEnabled = false,
                             UserName = "administrator",
                             FirstName = "admin",
@@ -404,7 +415,7 @@ namespace AuthenticationAndAuthorization.Migrations
                 {
                     b.HasOne("AuthenticationAndAuthorization.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserID");
+                        .HasForeignKey("AppUserId");
 
                     b.HasOne("AuthenticationAndAuthorization.Models.GradesPerTerm", "Final")
                         .WithMany()
